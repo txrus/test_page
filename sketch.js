@@ -13,7 +13,7 @@ function setup() {
       grid.push(cell);
     }
   }
-  current = grid[0];
+  current = grid[int(random(0, grid.length))];
 }
 
 function index(i, j) {
