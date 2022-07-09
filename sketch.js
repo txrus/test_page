@@ -95,3 +95,6 @@ function Cell(i, j) {
 
   }
 }
+function refreshPage() {
+  window.location.reload();
+}
