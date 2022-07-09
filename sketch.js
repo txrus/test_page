@@ -89,7 +89,7 @@ function Cell(i, j) {
       line(x, y + w, x, y);
     }
     if (this.visited) {
-      fill(255, 255, 0, 100);
+      fill(0, 255, 0, 100);
       rect(x, y, w, w);
     }
 
