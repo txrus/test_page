@@ -10,7 +10,7 @@ function setup() {
     for (let i = 0; i < cols; i++) {
       let cell = new Cell(i, j); // ลักษณะเหมือนการสร้าง object เลยแหะ น่าจะเป็น object จำนวน cell(ตาราง) จะถูกสร้างตามตัว cols row  
       // ต่อไปสร้างตัวแปร array ซะ ! เพื่อที่จะเก็บค่าของ cell แต่ละ loop คำถามจะทำไปทำไม ทำไปเพราะเดี๋ยวเราต้องใช้ตำแหน่งของแต่ละ cell มาละระบุที่อยู่ของ ตัว maze runner
-      grid.push(cell);
+      grid.push(cell); // ใส่ตำแหน่งของ cell มองค่า i j เป็นตำแหน่ง x y 
     }
   }
   current = grid[int(random(0, grid.length))];
