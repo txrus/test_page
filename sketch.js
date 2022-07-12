@@ -1,14 +1,14 @@
-var cols, rows;
-var w = 40;
-var grid = []; // การสร้าง array ของ js 
-var current;
+const cols, rows;
+const w = 40;
+const grid = []; // การสร้าง array ของ js 
+let current;
 function setup() {
   createCanvas(400, 400);
   cols = floor(width / w);
   rows = floor(height / w)
-  for (var j = 0; j < rows; j++) {
-    for (var i = 0; i < cols; i++) {
-      var cell = new Cell(i, j); // ลักษณะเหมือนการสร้าง object เลยแหะ น่าจะเป็น object จำนวน cell(ตาราง) จะถูกสร้างตามตัว cols row  
+  for (let j = 0; j < rows; j++) {
+    for (let i = 0; i < cols; i++) {
+      let cell = new Cell(i, j); // ลักษณะเหมือนการสร้าง object เลยแหะ น่าจะเป็น object จำนวน cell(ตาราง) จะถูกสร้างตามตัว cols row  
       // ต่อไปสร้างตัวแปร array ซะ ! เพื่อที่จะเก็บค่าของ cell แต่ละ loop คำถามจะทำไปทำไม ทำไปเพราะเดี๋ยวเราต้องใช้ตำแหน่งของแต่ละ cell มาละระบุที่อยู่ของ ตัว maze runner
       grid.push(cell);
     }
@@ -25,13 +25,13 @@ function index(i, j) {
 
 function draw() {
   background(51);
-  for (var i = 0; i < grid.length; i++) {
+  for (let i = 0; i < grid.length; i++) {
     grid[i].show();
 
   }
 
   current.visited = true;
-  var next = current.checkNeightbors();
+  let next = current.checkNeightbors();
   if (next) {
     next.visited = true;
     current = next;
@@ -46,11 +46,11 @@ function Cell(i, j) {
   this.visited = false;
 
   this.checkNeightbors = function() {
-    var neighbors = [];
-    var top = grid[index(i, j - 1)];
-    var right = grid[index(i + 1, j)];
-    var bottom = grid[index(i, j + 1)];
-    var left = grid[index(i - 1, j)];
+    let neighbors = [];
+    let top = grid[index(i, j - 1)];
+    let right = grid[index(i + 1, j)];
+    let bottom = grid[index(i, j + 1)];
+    let left = grid[index(i - 1, j)];
 
     if (top && !top.visited) {
       neighbors.push(top);
@@ -65,7 +65,7 @@ function Cell(i, j) {
       neighbors.push(left);
     }
     if (neighbors.length > 0) {
-      var r = floor(random(0, neighbors.length));
+      let r = floor(random(0, neighbors.length));
       return neighbors[r];
     } else {
       return undefined;
@@ -73,8 +73,8 @@ function Cell(i, j) {
   }
 
   this.show = function() {
-    var x = this.i * w;
-    var y = this.j * w;
+    let x = this.i * w;
+    let y = this.j * w;
     stroke(255);
     if (this.walls[0]) {
       line(x, y, x + w, y + w);
