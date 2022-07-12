@@ -1,5 +1,5 @@
 let cols, rows;
-const w = 40;
+const w = 20;
 const grid = []; // การสร้าง array ของ js 
 let current;
 function setup() {
