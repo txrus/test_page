@@ -1,7 +1,7 @@
-const cols, rows;
+let cols, rows;
 const w = 40;
 const grid = []; // การสร้าง array ของ js 
-var current;
+let current;
 function setup() {
   createCanvas(400, 400);
   cols = floor(width / w);
