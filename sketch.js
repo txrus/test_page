@@ -5,7 +5,7 @@ let current;
 function setup() {
   createCanvas(400, 400);
   cols = floor(width / w);
-  rows = floor(height / w)
+  rows = floor(height / w);
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < cols; i++) {
       let cell = new Cell(i, j); // ลักษณะเหมือนการสร้าง object เลยแหะ น่าจะเป็น object จำนวน cell(ตาราง) จะถูกสร้างตามตัว cols row  
