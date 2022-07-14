@@ -1,6 +1,7 @@
 let cols, rows;
 const w = 20;
 const grid = []; // การสร้าง array ของ js 
+const stack = [];
 let current;
 function setup() {
   createCanvas(400, 400);
@@ -34,13 +35,18 @@ function draw() {
   current.visited = true;
   let next = current.checkNeightbors();
   if (next) {
-    // Step 2
     next.visited = true;
+    // Step 2
+    stack.push(current);
     // Step 3
     removeWalls(current, next);
 
     // Step 4
     current = next;
+
+  } else if (stack.length > 0) {
+    current = stack.pop();
+
   }
 }
 
