@@ -1,11 +1,11 @@
-const cols, rows;
-const w = 40;
+let cols, rows;
+const w = 20;
 const grid = []; // การสร้าง array ของ js 
-var current;
+let current;
 function setup() {
   createCanvas(400, 400);
   cols = floor(width / w);
-  rows = floor(height / w)
+  rows = floor(height / w);
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < cols; i++) {
       let cell = new Cell(i, j); // ลักษณะเหมือนการสร้าง object เลยแหะ น่าจะเป็น object จำนวน cell(ตาราง) จะถูกสร้างตามตัว cols row  
@@ -29,11 +29,17 @@ function draw() {
     grid[i].show();
 
   }
-
+  // Step 1
+  current.hightlight();
   current.visited = true;
   let next = current.checkNeightbors();
   if (next) {
+    // Step 2
     next.visited = true;
+    // Step 3
+    removeWalls(current, next);
+
+    // Step 4
     current = next;
   }
 }
@@ -42,7 +48,7 @@ function draw() {
 function Cell(i, j) {
   this.i = i;
   this.j = j;
-  this.walls = [false, true, true, true]; // มองเป็นตัวเปิดปิด  top right bottom left
+  this.walls = [true, true, true, true]; // มองเป็นตัวเปิดปิด  top right bottom left
   this.visited = false;
 
   this.checkNeightbors = function() {
@@ -72,12 +78,20 @@ function Cell(i, j) {
     }
   }
 
+  this.hightlight = function() {
+    let x = this.i * w;
+    let y = this.j * w;
+    noStroke();
+    fill(0, 0, 255, 100);
+    rect(x, y, w, w);
+  }
+
   this.show = function() {
     let x = this.i * w;
     let y = this.j * w;
     stroke(255);
     if (this.walls[0]) {
-      line(x, y, x + w, y + w);
+      line(x, y, x, y);
     }
     if (this.walls[1]) {
       line(x + w, y, x + w, y + w);
@@ -89,6 +103,7 @@ function Cell(i, j) {
       line(x, y + w, x, y);
     }
     if (this.visited) {
+      noStroke();
       fill(0, 255, 0, 100);
       rect(x, y, w, w);
     }
@@ -97,4 +112,29 @@ function Cell(i, j) {
 }
 function refreshPage() {
   window.location.reload();
+}
+
+
+function removeWalls(a, b) {
+  const x = a.i - b.i;
+  if (x === 1) {
+    a.walls[3] = false;
+    b.walls[1] = false;
+
+  } else if (x === -1) {
+    a.walls[1] = false;
+    b.walls[3] = false;
+
+  }
+  const y = a.j - b.j;
+  if (y === 1) {
+    a.walls[0] = false;
+    b.walls[2] = false;
+
+  } else if (y === -1) {
+    a.walls[2] = false;
+    b.walls[0] = false;
+
+  }
+
 }
