@@ -10,3 +10,7 @@ function draw() {
   walker.show();
 
 }
+
+function refreshPage() {
+  window.location.reload();
+}

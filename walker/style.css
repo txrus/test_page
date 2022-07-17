@@ -18,3 +18,9 @@ h1 {
   text-align: center;
 
 }
+
+button {
+  border: none;
+  margin: 2rem 0;
+  padding: 2rem;
+}
