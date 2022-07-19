@@ -59,7 +59,8 @@ function refreshPage() {
 
 document.querySelector('.again').addEventListener('click', function() {
   document.querySelector('.guess').value = '';
-  document.querySelector('.number').textContent = '?'
+  document.querySelector('.number').textContent = '?';
   document.querySelector('.highscore').textContent = highscore;
-  document.querySelector('body').style.backgroundColor = "#222"
+  document.querySelector('body').style.backgroundColor = "#222";
+  document.querySelector('.score').textContent = '20';
 });
