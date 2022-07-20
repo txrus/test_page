@@ -1,10 +1,10 @@
 let cols, rows;
-const w = 10;
+const w = 5;
 const grid = []; // การสร้าง array ของ js 
 const stack = [];
 let current;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth / 2, windowHeight / 2);
   cols = floor(width / w);
   rows = floor(height / w);
   for (let j = 0; j < rows; j++) {
