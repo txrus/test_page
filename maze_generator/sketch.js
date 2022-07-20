@@ -1,5 +1,5 @@
 let cols, rows;
-const w = 5;
+const w = 10;
 const grid = []; // การสร้าง array ของ js 
 const stack = [];
 let current;
@@ -120,6 +120,9 @@ function refreshPage() {
   window.location.reload();
 }
 
+// document.querySelector(".rf-page").addEventListener('click', function() {
+//   window.location.reload();
+// });
 
 function removeWalls(a, b) {
   const x = a.i - b.i;
